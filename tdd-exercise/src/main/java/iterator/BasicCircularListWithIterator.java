@@ -2,6 +2,7 @@ package iterator;
 
 import java.util.Collections;
 import java.util.Iterator;
+import java.util.stream.IntStream;
 
 import tdd.BasicCircularList;
 import tdd.CircularList;
@@ -30,9 +31,7 @@ public class BasicCircularListWithIterator implements CircularListWithIterator{
         if(this.isEmpty()){
             return Collections.emptyIterator();
         }
-
-        //TODO: Implement the forward iterator
-        return null;
+        return IntStream.generate(() -> this.circularList.next().get()).iterator();
     }
 
     @Override
@@ -40,8 +39,6 @@ public class BasicCircularListWithIterator implements CircularListWithIterator{
         if(this.isEmpty()){
             return Collections.emptyIterator();
         }
-
-        //TODO: Implement the backword iterator
-        return null;
+        return IntStream.generate(() -> this.circularList.previous().get()).iterator();
     }
 }
